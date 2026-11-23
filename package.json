@@ -1,0 +1,12 @@
+{
+  "name": "gym-management-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gym Management ERP SaaS",
+  "scripts": {
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build:backend": "npm --prefix backend run build",
+    "build:frontend": "npm --prefix frontend run build"
+  }
+}
