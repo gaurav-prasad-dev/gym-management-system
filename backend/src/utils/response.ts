@@ -64,3 +64,16 @@ export const sendError = (
 
   return res.status(statusCode).json(payload);
 };
+
+export const sendCreated = <T>(res: Response, message: string, data?: T): Response => {
+  return sendSuccess(res, message, data, 201);
+};
+
+export const sendPaginated = <T>(
+  res: Response,
+  message: string,
+  data: T,
+  pagination: PaginationMeta
+): Response => {
+  return sendSuccess(res, message, data, 200, pagination);
+};

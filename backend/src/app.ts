@@ -9,6 +9,8 @@ import { notFound } from './middleware/notFound';
 import { errorHandler } from './middleware/errorHandler';
 import { sendSuccess } from './utils/response';
 import { authRoutes } from './modules/auth/auth.routes';
+import { rolesRouter, permissionsRouter } from './modules/roles/roles.routes';
+import { staffRoutes } from './modules/staff/staff.routes';
 
 export const app = express();
 
@@ -45,6 +47,13 @@ app.get('/api/health', async (_req: Request, res: Response) => {
 
 // Authentication Routes
 app.use('/api/v1/auth', authRoutes);
+
+// Dynamic RBAC & Permissions Routes
+app.use('/api/v1/roles', rolesRouter);
+app.use('/api/v1/permissions', permissionsRouter);
+
+// Staff Management Routes
+app.use('/api/v1/staff', staffRoutes);
 
 // 404 Handler
 app.use(notFound);
