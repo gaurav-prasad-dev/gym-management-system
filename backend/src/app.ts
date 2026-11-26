@@ -11,6 +11,7 @@ import { sendSuccess } from './utils/response';
 import { authRoutes } from './modules/auth/auth.routes';
 import { rolesRouter, permissionsRouter } from './modules/roles/roles.routes';
 import { staffRoutes } from './modules/staff/staff.routes';
+import { membersRoutes } from './modules/members/members.routes';
 
 export const app = express();
 
@@ -54,6 +55,9 @@ app.use('/api/v1/permissions', permissionsRouter);
 
 // Staff Management Routes
 app.use('/api/v1/staff', staffRoutes);
+
+// Member Management Routes
+app.use('/api/v1/members', membersRoutes);
 
 // 404 Handler
 app.use(notFound);

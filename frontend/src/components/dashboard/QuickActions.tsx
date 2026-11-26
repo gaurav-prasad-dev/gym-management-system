@@ -2,7 +2,11 @@ import React from 'react';
 import { Button } from '../common/Button';
 import { UserPlus, CalendarCheck, Receipt, Sparkles } from 'lucide-react';
 
-export const QuickActions: React.FC = () => {
+export interface QuickActionsProps {
+  onRegisterMember?: () => void;
+}
+
+export const QuickActions: React.FC<QuickActionsProps> = ({ onRegisterMember }) => {
   return (
     <div className="glass-panel rounded-3xl p-5 space-y-4">
       <div className="flex items-center justify-between">
@@ -21,7 +25,8 @@ export const QuickActions: React.FC = () => {
         <Button
           variant="primary"
           icon={<UserPlus className="w-4 h-4 text-white" />}
-          className="justify-start py-3 px-4 rounded-2xl"
+          className="justify-start py-3 px-4 rounded-2xl cursor-pointer"
+          onClick={onRegisterMember}
         >
           <div className="text-left">
             <p className="font-bold text-xs leading-none text-white">Register New Member</p>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutDashboard, Dumbbell, LogOut, X } from 'lucide-react';
+import { LayoutDashboard, Dumbbell, LogOut, X, Users } from 'lucide-react';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -7,6 +7,7 @@ interface SidebarProps {
   activeItem?: string;
   userName?: string;
   userRole?: string;
+  onNavigate?: (item: string) => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -15,6 +16,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   activeItem = 'dashboard',
   userName = 'System Owner',
   userRole = 'Owner',
+  onNavigate,
 }) => {
   return (
     <>
@@ -60,6 +62,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </span>
           <div className="mt-2 space-y-1">
             <button
+              onClick={() => onNavigate && onNavigate('dashboard')}
               className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-2xl text-xs font-bold transition-all duration-150 ${
                 activeItem === 'dashboard'
                   ? 'bg-[#EBF3FB] text-[#303943] shadow-glass-sm'
@@ -68,6 +71,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
             >
               <LayoutDashboard className="w-4 h-4 text-[#346CB0]" />
               <span>Dashboard</span>
+            </button>
+
+            <button
+              onClick={() => onNavigate && onNavigate('members')}
+              className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-2xl text-xs font-bold transition-all duration-150 ${
+                activeItem === 'members'
+                  ? 'bg-[#EBF3FB] text-[#303943] shadow-glass-sm'
+                  : 'text-[#84909D] hover:text-[#303943] hover:bg-white/60'
+              }`}
+            >
+              <Users className="w-4 h-4 text-[#346CB0]" />
+              <span>Members</span>
             </button>
           </div>
         </nav>
